@@ -1,3 +1,8 @@
+# To Build
+- Run `npm i -g gulp`
+- Run `gulp build:component` locally
+
+
 This directive gives you a Bootstrap Dropdown with the power of AngularJS directives.
 
 # Features

@@ -38,7 +38,7 @@ export default function dropdownMultiselectController(
 		$scope,
 		$element,
 		$filter,
-		$document,
+		$document
 ) {
 	'ngInject';
 
@@ -52,6 +52,7 @@ export default function dropdownMultiselectController(
 		onMaxSelectionReached: angular.noop,
 		onSelectionChanged: angular.noop,
 		onClose: angular.noop,
+		onSave: angular.noop
 	};
 
 	const settings = {
@@ -136,6 +137,7 @@ export default function dropdownMultiselectController(
 		texts,
 		input,
 		close,
+		save,
 		selectCurrentGroup,
 		getGroupLabel,
 		getButtonText,
@@ -197,6 +199,12 @@ export default function dropdownMultiselectController(
 		$scope.open = false;
 		$scope.input.searchFilter = $scope.settings.clearSearchOnClose ? '' : $scope.input.searchFilter;
 		$scope.externalEvents.onClose();
+	}
+
+	function save() {
+		$scope.open = false;
+		$scope.input.searchFilter = $scope.settings.clearSearchOnClose ? '' : $scope.input.searchFilter;
+		$scope.externalEvents.onSave();
 	}
 
 	function selectCurrentGroup(currentGroup) {
@@ -498,7 +506,7 @@ export default function dropdownMultiselectController(
 				setTimeout(
 					() => {
 						angular.element($element)[0].querySelector('.searchField').focus();
-					}, 0,
+					}, 0
 				);
 			} else {
 				focusFirstOption();

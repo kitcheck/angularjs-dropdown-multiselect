@@ -12,6 +12,14 @@
   <ul class="dropdown-menu dropdown-menu-form"
       ng-if="open"
       ng-style="{display: open ? 'block' : 'none', height : settings.scrollable ? settings.scrollableHeight : 'auto', overflow: 'auto' }">
+    <li ng-if="settings.applyButton">
+      <a ng-click="save()"
+         tabindex="-1"
+         id="applyButton">
+        <span class="fa fa-save"></span>
+        {{texts.applyText}}
+      </a>
+    </li>
     <li ng-if="settings.showCheckAll && settings.selectionLimit === 0">
       <a ng-keydown="keyDownLink($event)"
          data-ng-click="selectAll()"
@@ -20,6 +28,8 @@
         <span class="fa fa-check"></span>
         {{texts.checkAll}}
       </a>
+    </li>
+
     <li ng-if="settings.showUncheckAll">
       <a ng-keydown="keyDownLink($event)"
          data-ng-click="deselectAll();"
