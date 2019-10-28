@@ -163,6 +163,7 @@
 		};
 
 		var settings = {
+			displayOptionsAfterSearchCharLimit: null,
 			dynamicTitle: true,
 			scrollable: false,
 			scrollableHeight: '300px',
@@ -601,6 +602,10 @@
 		function getFilter(searchFilter) {
 			var filter = {};
 			filter[$scope.settings.searchField] = searchFilter;
+			if ($scope.settings.displayOptionsAfterSearchCharLimit && searchFilter.length < $scope.settings.displayOptionsAfterSearchCharLimit) {
+				filter[$scope.settings.searchField] = '*******';
+			}
+
 			return filter;
 		}
 

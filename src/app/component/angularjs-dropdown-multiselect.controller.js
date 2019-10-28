@@ -56,6 +56,7 @@ export default function dropdownMultiselectController(
 	};
 
 	const settings = {
+        displayOptionsAfterSearchCharLimit: null,
 		dynamicTitle: true,
 		scrollable: false,
 		scrollableHeight: '300px',
@@ -482,7 +483,11 @@ export default function dropdownMultiselectController(
 
 	function getFilter(searchFilter) {
 		const filter = {};
-		filter[$scope.settings.searchField] = searchFilter;
+        filter[$scope.settings.searchField] = searchFilter;
+        if ($scope.settings.displayOptionsAfterSearchCharLimit && searchFilter.length < $scope.settings.displayOptionsAfterSearchCharLimit) {
+            filter[$scope.settings.searchField] = '*******';
+        }
+
 		return filter;
 	}
 
